@@ -124,5 +124,56 @@ namespace Assessment_3___Sorting
             return result;
         }
 
+        public double[] quickSort(double[] array, int left, int right)
+        {
+            if (left < right)
+            {
+                int pivot = Partition(array, left, right);
+
+                if (pivot > 1)
+                {
+                    quickSort(array, left, pivot - 1);
+                }
+                if (pivot + 1 < right)
+                {
+                    quickSort(array, pivot + 1, right);
+                }
+            }
+            return array;
+        }
+
+        private static int Partition(double[] array, int left, int right)
+        {
+            double pivot = array[left];
+            while (true)
+            {
+
+                while (array[left] < pivot)
+                {
+                    left++;
+                }
+
+                while (array[right] > pivot)
+                {
+                    right--;
+                }
+
+                if (left < right)
+                {
+                    if (array[left] == array[right]) return right;
+
+                    double temp = array[left];
+                    array[left] = array[right];
+                    array[right] = temp;
+
+
+                }
+                else
+                {
+                    return right;
+                }
+            }
+        }
+
     }
 }

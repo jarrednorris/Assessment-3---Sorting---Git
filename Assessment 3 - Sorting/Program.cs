@@ -117,14 +117,17 @@ namespace Assessment_3___Sorting
             if (fileNum == 256)
             {
                 array = sortingInstance.mergeSort(array);
+                Console.WriteLine("Sorting method - mergeSort:");
             }
             else if (fileNum == 2048)
             {
                 array = sortingInstance.bubbleSort(array, fileNum);
+                Console.WriteLine("Sorting method - bubbleSort:");
             }
             else if (fileNum == 4096)
             {
-                array = sortingInstance.bubbleSort(array, fileNum);
+                array = sortingInstance.quickSort(array, 0, (fileNum-1));
+                Console.WriteLine("Sorting method - quickSort:");
             }
 
             return array;

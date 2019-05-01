@@ -5,3 +5,10 @@ E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\
 E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.csproj.CoreCompileInputs.cache
 E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.exe
 E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.pdb
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\bin\Debug\Assessment 3 - Sorting.exe.config
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\bin\Debug\Assessment 3 - Sorting.exe
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\bin\Debug\Assessment 3 - Sorting.pdb
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.csprojAssemblyReference.cache
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.csproj.CoreCompileInputs.cache
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.exe
+E:\Libraries\Documents\Uni Stuff\Coding Projects\Algorithms and Complexity\Code\Assessment 3 - Sorting - Git\Assessment 3 - Sorting\obj\Debug\Assessment 3 - Sorting.pdb
