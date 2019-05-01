@@ -11,7 +11,7 @@ namespace Assessment_3___Sorting
     {        
         public double[] Read(string file, int numRead) // function that read the file
         {
-
+            int stepCounter = 0;
             double[] data = new double[numRead]; // create an array for numbers
             StreamReader readLines = new StreamReader(file); // initiate the reader
             int i = 0;
@@ -23,10 +23,11 @@ namespace Assessment_3___Sorting
                 {
                     data[i] = result;
                     i++;
+                    stepCounter++;
                 }
                 if (!isNumber)
                 {
-                    
+                    stepCounter++;
                 }
             }
             //foreach (var element in data)
@@ -34,7 +35,7 @@ namespace Assessment_3___Sorting
             //    Console.WriteLine(element);
             //}
             //Console.ReadLine();
-
+            Console.WriteLine("File Read Steps: {0}", stepCounter++);
             return data;
         }
     }

@@ -8,13 +8,20 @@ namespace Assessment_3___Sorting
 {
     class Sorting
     {
+        
+        public int mergeSortCounter = 0;
+        public int mergeCounter = 0;
+        public int quickSortCounter = 0;
+        public int partitionCounter = 0;
 
         public double[] bubbleSort(double[] array, int arrayLength)
         {
+            int stepCounter = 0;
             for (int i = 0; i < arrayLength - 1; i++)
             {
                 for (int j = 0; j < arrayLength - 1 - i; j++)
                 {
+                    stepCounter++;
                     if (array[j + 1] < array[j])
                     {
                         double temp = array[j];
@@ -23,8 +30,11 @@ namespace Assessment_3___Sorting
                     }
                 }
             }
+            Console.WriteLine("bubbleSort() Steps: {0}", stepCounter);
             return array;
         }
+
+        
 
         public double[] mergeSort(double[] array)
         {
@@ -50,11 +60,14 @@ namespace Assessment_3___Sorting
             else
                 right = new double[midpoint + 1];
 
-            
+
             //fill the arrays
 
             for (int i = 0; i < midpoint; i++)
+            {
                 left[i] = array[i];
+                mergeSortCounter++;
+            }
 
             int x = 0;
             
@@ -62,6 +75,7 @@ namespace Assessment_3___Sorting
             {
                 right[x] = array[i];
                 x++;
+                mergeSortCounter++;
             }
 
 
@@ -75,19 +89,24 @@ namespace Assessment_3___Sorting
 
             //merge left and right
             result = merge(left, right);
-            
+
+
             return result;
         }
 
         
-        public static double[] merge(double[] left, double[] right)
+
+        public double[] merge(double[] left, double[] right)
         {
+            
             int resultLength = right.Length + left.Length;
             double[] result = new double[resultLength];
             int indexLeft = 0, indexRight = 0, indexResult = 0;
             //while either array still has an element
+            
             while (indexLeft < left.Length || indexRight < right.Length)
             {
+                mergeCounter++;
                 //if both arrays have elements  
                 if (indexLeft < left.Length && indexRight < right.Length)
                 {
@@ -126,6 +145,7 @@ namespace Assessment_3___Sorting
 
         public double[] quickSort(double[] array, int left, int right)
         {
+            quickSortCounter++;
             if (left < right)
             {
                 int pivot = Partition(array, left, right);
@@ -142,7 +162,7 @@ namespace Assessment_3___Sorting
             return array;
         }
 
-        private static int Partition(double[] array, int left, int right)
+        private int Partition(double[] array, int left, int right)
         {
             double pivot = array[left];
             while (true)
@@ -151,11 +171,13 @@ namespace Assessment_3___Sorting
                 while (array[left] < pivot)
                 {
                     left++;
+                    partitionCounter++;
                 }
 
                 while (array[right] > pivot)
                 {
                     right--;
+                    partitionCounter++;
                 }
 
                 if (left < right)
@@ -173,6 +195,7 @@ namespace Assessment_3___Sorting
                     return right;
                 }
             }
+            
         }
 
     }

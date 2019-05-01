@@ -18,6 +18,7 @@ namespace Assessment_3___Sorting
             Console.WriteLine("Enter filename to be read (CASE SENSITIVE | include extension '.txt'):");
             string fileName = Console.ReadLine();
             int fileNum = 0;
+            int stepCounter = 0;
             string searchType = "binary";
 
 
@@ -50,12 +51,14 @@ namespace Assessment_3___Sorting
                 for (int i = 0; i < fileNum - 1; i += 10)  //Print 10th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
 
                 Console.WriteLine("Here is every 10th value of the array in descending order");
                 for (int i = fileNum - 1; i >= 0; i -= 10)  //Print 10th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
             }
 
@@ -65,12 +68,14 @@ namespace Assessment_3___Sorting
                 for (int i = 0; i < fileNum - 1; i += 50)  //Print 50th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
 
                 Console.WriteLine("Here is every 50th value of the array in descending order");
                 for (int i = fileNum - 1; i >= 0; i -= 50)  //Print 50th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
             }
 
@@ -80,12 +85,14 @@ namespace Assessment_3___Sorting
                 for (int i = 0; i < fileNum - 1; i += 80)  //Print 80th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
 
                 Console.WriteLine("Here is every 80th value of the array in descending order");
                 for (int i = fileNum - 1; i >= 0; i -= 80)  //Print 80th value of array
                 {
                     Console.WriteLine(sortedArrayAsc[i]);
+                    stepCounter++;
                 }
             }
 
@@ -104,7 +111,7 @@ namespace Assessment_3___Sorting
             Console.WriteLine("Enter number to search for (datatype=double) (best determined search method - searchMethod={0}):", searchType);
             string searchTerm = Console.ReadLine();
             double.TryParse(searchTerm, out double searchValue);
-            
+            Console.WriteLine("ArrayFetch() Steps: {0}", stepCounter);
             ArraySearch(sortedArrayAsc, searchValue, fileNum, searchType);
             
 
@@ -113,29 +120,36 @@ namespace Assessment_3___Sorting
         public static double[] ArraySort(double[] array, int fileNum)
         {
             Sorting sortingInstance = new Sorting();
+            int stepCounter = 0;
 
             if (fileNum == 256)
             {
                 array = sortingInstance.mergeSort(array);
-                Console.WriteLine("Sorting method - mergeSort:");
+                Console.WriteLine("Sorting method - mergeSort");
+                Console.WriteLine("mergeSort() Steps: {0} | merge() steps: {1}", sortingInstance.mergeSortCounter, sortingInstance.mergeCounter);
+
             }
             else if (fileNum == 2048)
             {
                 array = sortingInstance.bubbleSort(array, fileNum);
-                Console.WriteLine("Sorting method - bubbleSort:");
+                Console.WriteLine("Sorting method - bubbleSort");
+
             }
             else if (fileNum == 4096)
             {
                 array = sortingInstance.quickSort(array, 0, (fileNum-1));
-                Console.WriteLine("Sorting method - quickSort:");
+                Console.WriteLine("Sorting method - quickSort");
+                Console.WriteLine("quickSort() Steps: {0} | merge() steps: {1}", sortingInstance.quickSortCounter, sortingInstance.partitionCounter);
             }
-
+            stepCounter++;
+            Console.WriteLine("ArraySort() Steps: {0}", stepCounter);
             return array;
         }
 
         public static void ArraySearch(double[] array, double searchValue, int fileNum, string searchType)
         {
             Searching searchingInstance = new Searching();
+            int stepCounter = 0;
 
             if (searchType == "binary")
             {
@@ -153,29 +167,36 @@ namespace Assessment_3___Sorting
                 SearchResults(array, isFound, searchPosition, closestValue);
             }
 
-            
-
+            stepCounter++;
+            Console.WriteLine("ArraySearch() Steps: {0}", stepCounter);
 
         }
 
         public static void SearchResults(double[] array, bool isFound, int searchPosition, double closestValue)
         {
+            int stepCounter = 0;
+
             if (isFound)
             {
                 Console.WriteLine("This number IS present in the array at positions");
                 int searchPositionTemp = searchPosition;
                 Console.WriteLine(searchPositionTemp);
+
                 while (array[searchPositionTemp - 1] == array[searchPosition])
                 {
                     Console.WriteLine(searchPositionTemp - 1);
                     searchPositionTemp--;
+                    stepCounter++;
                 }
+
                 Console.WriteLine(searchPosition);
                 searchPositionTemp = searchPosition;
+
                 while (array[searchPositionTemp + 1] == array[searchPosition])
                 {
                     Console.WriteLine(searchPositionTemp + 1);
                     searchPositionTemp++;
+                    stepCounter++;
                 }
             }
 
@@ -183,6 +204,8 @@ namespace Assessment_3___Sorting
             {
                 Console.WriteLine("This number IS NOT present in the array. The closest value is {1} at position {0} in the sorted array", searchPosition, closestValue);
             }
+            
+            Console.WriteLine("SearchResults() Steps: {0}", stepCounter);
             Console.ReadLine();
         }
 

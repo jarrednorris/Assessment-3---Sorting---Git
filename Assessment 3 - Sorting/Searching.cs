@@ -10,7 +10,7 @@ namespace Assessment_3___Sorting
     {
         public void BinarySearch(double[] array, double searchValue, int arrayLength, out bool isFound, out int searchPosition, out double closestValue)
         {
-
+            int stepCounter = 0;
             closestValue = 0;
             searchPosition = 0;
             int left;
@@ -20,9 +20,12 @@ namespace Assessment_3___Sorting
             right = arrayLength - 1;
             string lastUsed = "left";
             isFound = false;
+            if (searchValue > array[array.Length - 1])
+                lastUsed = "right";
 
             while (left <= right)
             {
+                stepCounter++;
                 midpoint = (left + right) / 2;
 
                 if (searchValue == array[midpoint])
@@ -50,55 +53,77 @@ namespace Assessment_3___Sorting
             {
                 if (lastUsed == "left")
                 {
-                    Console.WriteLine(array[midpoint]);
-                    double differenceBelow = searchValue - array[midpoint];
-                    double differenceAbove = array[midpoint + 1] - searchValue;
-                    if (differenceBelow < differenceAbove)
+                    if (midpoint != 0 && midpoint != array.Length - 1)
                     {
-                        closestValue = array[midpoint];
-                        searchPosition = midpoint;
-                        Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        Console.WriteLine(array[midpoint]);
+                        double differenceBelow = searchValue - array[midpoint];
+                        double differenceAbove = array[midpoint + 1] - searchValue;
+                        if (differenceBelow < differenceAbove)
+                        {
+                            closestValue = array[midpoint];
+                            searchPosition = midpoint;
+                            Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        }
+                        else
+                        {
+                            closestValue = array[midpoint + 1];
+                            searchPosition = midpoint + 1;
+                            Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        }
                     }
                     else
                     {
-                        closestValue = array[midpoint + 1];
-                        searchPosition = midpoint + 1;
-                        Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        searchPosition = midpoint;
+                        closestValue = array[midpoint];
                     }
                 }
                 else
                 {
-
-                    Console.WriteLine(array[midpoint]);
-                    double differenceBelow = searchValue - array[midpoint - 1];
-                    double differenceAbove = array[midpoint] - searchValue;
-                    if (differenceBelow < differenceAbove)
+                    if (midpoint != 0 && midpoint != array.Length - 1)
                     {
-                        closestValue = array[midpoint - 1];
-                        searchPosition = midpoint - 1;
-                        Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        Console.WriteLine(array[midpoint]);
+                        double differenceBelow = searchValue - array[midpoint - 1];
+                        double differenceAbove = array[midpoint] - searchValue;
+                        if (differenceBelow < differenceAbove)
+                        {
+                            closestValue = array[midpoint - 1];
+                            searchPosition = midpoint - 1;
+                            Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        }
+                        else
+                        {
+                            closestValue = array[midpoint];
+                            searchPosition = midpoint;
+                            Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        }
                     }
                     else
                     {
-                        closestValue = array[midpoint];
                         searchPosition = midpoint;
-                        Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        closestValue = array[midpoint];
                     }
                 }
             }
+
+            Console.WriteLine("BinarySearch() Steps: {0}", stepCounter);
+
         }
 
         public void interpolationSearch(double[] array, double searchValue, out bool isFound, out int searchPosition, out double closestValue)
         {
+            int stepCounter = 0;
             closestValue = 0;
             searchPosition = 5;
             isFound = false;
             string lastUsed = "left";
             int left = 0;
             int right = (array.Length - 1);
+            if (searchValue > array[array.Length-1])
+                lastUsed = "right";
 
             while (left <= right && searchValue >= array[left] && searchValue <= array[right])
             {
+                stepCounter++;
                 if (left == right)
                 {
                     if (array[left] == searchValue)
@@ -130,6 +155,7 @@ namespace Assessment_3___Sorting
                     right = pos - 1;
                     lastUsed = "right";
                 }
+                
             }
 
             //calculate nearest value
@@ -160,44 +186,61 @@ namespace Assessment_3___Sorting
                 
                 if (lastUsed == "left")
                 {
-                    Console.WriteLine(array[left]);
-                    Console.WriteLine(array[left-1]);
-                    double differenceBelow = searchValue - array[left];
-                    double differenceAbove = array[left - 1] - searchValue;
-                    if (differenceBelow > differenceAbove)
+                    //Console.WriteLine("what is left? {0}", left);
+                    if (left != 0 && left != array.Length - 1)
                     {
-                        closestValue = array[left];
-                        searchPosition = left;
-                        Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        Console.WriteLine(array[left]);
+                        Console.WriteLine(array[left - 1]);
+                        double differenceBelow = searchValue - array[left];
+                        double differenceAbove = array[left - 1] - searchValue;
+                        if (differenceBelow > differenceAbove)
+                        {
+                            closestValue = array[left];
+                            searchPosition = left;
+                            Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        }
+                        else
+                        {
+                            closestValue = array[left - 1];
+                            searchPosition = left - 1;
+                            Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        }
                     }
                     else
                     {
-                        closestValue = array[left - 1];
-                        searchPosition = left - 1;
-                        Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        searchPosition = left;
+                        closestValue = array[left];
                     }
                 }
                 else
                 {
-
-                    Console.WriteLine(array[right]);
-                    Console.WriteLine(array[right+1]);
-                    double differenceBelow = searchValue - array[right - 1];
-                    double differenceAbove = array[right] - searchValue;
-                    if (differenceBelow > differenceAbove)
+                    if (right != 0 && right != array.Length - 1)
                     {
-                        closestValue = array[right + 1];
-                        searchPosition = right + 1;
-                        Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        Console.WriteLine(array[right]);
+                        Console.WriteLine(array[right + 1]);
+                        double differenceBelow = searchValue - array[right - 1];
+                        double differenceAbove = array[right] - searchValue;
+                        if (differenceBelow > differenceAbove)
+                        {
+                            closestValue = array[right + 1];
+                            searchPosition = right + 1;
+                            Console.WriteLine("I have chosen the below option as the difference calculation gave {0}  and {1}", differenceBelow, differenceAbove);
+                        }
+                        else
+                        {
+                            closestValue = array[right];
+                            searchPosition = right;
+                            Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        }
                     }
                     else
                     {
-                        closestValue = array[right];
                         searchPosition = right;
-                        Console.WriteLine("I have chosen the above option as the difference calculation gave {0}  and {1}", differenceAbove, differenceBelow);
+                        closestValue = array[right];
                     }
                 }
             }
+            Console.WriteLine("interpolationSearch() Steps: {0}", stepCounter);
         }
     }
 }
